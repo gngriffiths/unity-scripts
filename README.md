@@ -1,2 +1,2 @@
 # unity-scripts
-A collection Unity scrips that I use on multiple projects
+A collection of Unity scrips that I use on multiple projects
