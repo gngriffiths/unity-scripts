@@ -19,6 +19,34 @@ public class UniTaskExamples
         reactivePropertyBool.Value = !reactivePropertyBool.Value;
     }
 	
+    #region Periodic
+    // Do an action every X time.
+    CancellationTokenSource cts = new CancellationTokenSource();
+
+    void StartPeriodTask()
+    {
+            cts = new CancellationTokenSource();
+            PeriodicTask(1f, cts.Token).Forget();        
+    }
+
+    void CancelPeriodTask()
+    {
+        cts.Cancel();
+        cts.Dispose();
+    }
+
+    private async UniTaskVoid PeriodicTask(float seconds, CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(seconds), cancellationToken: cancellationToken);
+
+            // Call your method here.
+            Debug.Log("Call method here");
+        }
+    }
+    #endregion
+
 	#region EveryFrames	
 	// UniTaskAsyncEnumberal (same as UniRx Observable) 
     int frameNumber = 1000;
