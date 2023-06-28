@@ -1,6 +1,9 @@
 using Fusion;
 using UnityEngine;
 
+// NOTE
+// This needs to be added to a prefab gameobject that the server spawns. It will not work if added to a gameobject that is already in the scene.
+
 public class FusionTestMessages : NetworkBehaviour
 {
     [SerializeField] bool sendMessage;

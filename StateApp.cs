@@ -12,30 +12,30 @@ namespace App.States
             Third
         }
 
-        public States State { get; private set; }
+        public States CurrentState { get; private set; }
 
         public static Action<States> OnStateChanged;
 
         public void Start()
         {
-            //AppState.OnStateChanged += (state) =>
+            //AppState.OnStateChanged += (CurrentState) =>
             //{
-            //    if (state == State.States.First)
+            //    if (CurrentState == CurrentState.States.First)
             //            // Do action.
             //};
 
-            UnityEngine.Debug.Log("AppState Start");
+            UnityEngine.Debug.Log($"AppState: {CurrentState}");
         }
 
-        public void SetState(States state)
+        public void SetState(States CurrentState)
         {
-            if (State == state)
+            if (CurrentState == CurrentState)
                 return;
 
-            UnityEngine.Debug.Log("State: " + state);
-            State = state;
+            UnityEngine.Debug.Log("CurrentState: " + CurrentState);
+            CurrentState = CurrentState;
 
-            OnStateChanged?.Invoke(state);
+            OnStateChanged?.Invoke(CurrentState);
         }
     }
 }
