@@ -7,16 +7,16 @@ public class UniTaskExamples
 {
 
     // AsyncReactiveProperty (same as UnRx Reactive Properties)
-    AsyncReactiveProperty<bool> reactivePropertyBool = new AsyncReactiveProperty<bool>(false);
+    AsyncReactiveProperty<bool> reactivePropertyBoolRx = new AsyncReactiveProperty<bool>(false);
 
     void SubscribeToReactiveProperty()
     {
-        reactivePropertyBool.Where(_reactivePropertyBool => _reactivePropertyBool == true).Subscribe(_ => Debug.Log("Reactive Property is true"));
+        reactivePropertyBoolRx.Where(_boolRx => _boolRx == true).Subscribe(_ => Debug.Log("Reactive Property is true"));
     }
 
     void ChangeReactiveProperty()
     {
-        reactivePropertyBool.Value = !reactivePropertyBool.Value;
+        reactivePropertyBoolRx.Value = !reactivePropertyBoolRx.Value;
     }
 	
     #region Periodic
