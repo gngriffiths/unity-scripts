@@ -81,7 +81,7 @@ public class UniTaskExamples
             Debug.Log("Interval frame: " + Time.frameCount);
         }
     }
-    async UniTask EveryUpdate(CancellationToken token)      // IntervalFrame is similar to Update, but fires every X frames
+    async UniTask EveryUpdate(CancellationToken token)      // EveryUpdate is basically a cancellable Update(). It fires every frame.
     {
         await foreach (var _ in UniTaskAsyncEnumerable.EveryUpdate().WithCancellation(token))              // Set frame count in IntervalFrame()
         {
