@@ -12,8 +12,8 @@ namespace App.States
             Third
         }
 
-        public States CurrentState { get; private set; }
-
+        // Scripts that act on the state can use the static properties. Scripts that change the state need to import StateApp.
+        public static States CurrentState { get; private set; }
         public static Action<States> OnStateChanged;
 
         public void Start()
