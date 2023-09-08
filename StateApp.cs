@@ -12,7 +12,7 @@ namespace App.States
             Third
         }
 
-        // Scripts that act on the state can use the static properties. Scripts that change the state need to import StateApp.
+        // Scripts that act on the state can use the static properties. Scripts that change the state need to inject StateApp.
         public static States CurrentState { get; private set; }
         public static Action<States> OnStateChanged;
 
