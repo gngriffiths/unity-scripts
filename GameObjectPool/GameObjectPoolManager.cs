@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameObjectPoolManager : MonoBehaviour
 {
-    List<GameObject> activatedGameObjects;
+    List<GameObject> activatedGameObjects = new List<GameObject>();
 
     GameObjectPool gameObjectPool
     {
@@ -18,7 +18,26 @@ public class GameObjectPoolManager : MonoBehaviour
     }
     GameObjectPool _gameObjectPool;
 
-    void ReturnAllToPool()
+    public GameObject GetObjectFromPool()
+    {
+        GameObject obj = gameObjectPool.GetObjectFromPool();
+        activatedGameObjects.Add(obj);
+        return obj;
+
+    }
+
+    public void ReturnObjectToPool(GameObject gameObject)
+    {
+        // Get gameObject from acivatedGameObjects.
+        var go = activatedGameObjects.Contains(gameObject);
+        if (go)
+        {
+            gameObjectPool.ReturnObjectToPool(gameObject);
+            activatedGameObjects.Remove(gameObject);
+        }
+    }
+
+    public void ReturnAllToPool()
     {
         foreach (var gameObject in activatedGameObjects)
         {
@@ -27,13 +46,5 @@ public class GameObjectPoolManager : MonoBehaviour
         activatedGameObjects.Clear();
     }
 
-    private void RemovePoint()
-    {
-        if (activatedGameObjects.Count == 0)
-            return;
-
-        gameObjectPool.ReturnObjectToPool(activatedGameObjects[0]);
-        activatedGameObjects.RemoveAt(0);
-    }
 }
 

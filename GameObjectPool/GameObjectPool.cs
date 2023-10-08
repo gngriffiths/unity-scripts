@@ -8,7 +8,7 @@ public class GameObjectPool : MonoBehaviour
 
     private Queue<GameObject> pool;
 
-    void Start()
+    void Awake()
     {
         // Initialize the object pool
         pool = new Queue<GameObject>();
@@ -42,6 +42,7 @@ public class GameObjectPool : MonoBehaviour
     // Use this function to return an object to the pool
     public void ReturnObjectToPool(GameObject obj)
     {
+        obj.transform.parent = transform;
         obj.SetActive(false);
         pool.Enqueue(obj);
     }
