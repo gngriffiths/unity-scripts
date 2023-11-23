@@ -2,6 +2,9 @@
 using UnityEngine;
 using VContainer;
 
+// NOTE
+// The parent script needs to be injected either via Auto Injection or RegisterComponent (prefable because it can then be injected into scripts that call it).
+
 public abstract class GameObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
