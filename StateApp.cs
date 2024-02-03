@@ -23,12 +23,12 @@ namespace App.States
             //    if (CurrentState == CurrentState.States.First)
             //            // Do action.
             //};
-
-            UnityEngine.Debug.Log($"AppState: {CurrentState}");
         }
 
         public void SetState(States currentState)
         {
+            UnityEngine.Debug.Log($"AppState: {CurrentState}");
+
             if (CurrentState == currentState)
                 return;
 
